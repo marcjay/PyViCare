@@ -200,6 +200,10 @@ class HeatingDevice:
     def setDomesticHotWaterOperatingMode(self, mode):
         return self.service.setProperty("heating.dhw.operating.modes.active", "setMode",
                                         {'mode': mode})
+        
+    @handleNotSupported
+    def getDomesticHotWaterOperatingMode(self):
+        return self.service.getProperty("heating.dhw.operating.modes.active")["properties"]["value"]["value"]
 
     @handleNotSupported
     def getDomesticHotWaterSchedule(self):
